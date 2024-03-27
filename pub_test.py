@@ -1,3 +1,13 @@
+username = "test_user_1"
+password = "test_password_1"
+
+data = str(random.randrange(0,5000))
+qos = 0
+retain = False
+
+ip = "160.217.169.226"
+port = 1883
+
 import paho.mqtt.client as mqtt 
 import random
 
@@ -11,17 +21,13 @@ try:
     mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 except:
     mqttc = mqtt.Client()
+
 mqttc.on_connect = on_connect
 mqttc.on_message = on_message
+mqttc.username_pw_set(username = username,password = password)#test_user_1
+mqttc.connect(ip, port, keepalive = 10)
 
-
-mqttc.username_pw_set(username="test_user_1",password="test_password_1")#test_user_1
-mqttc.connect("160.217.169.226", 1883, 10)
-data = str(random.randrange(0,5000))
-mqttc.publish("test_topic_number_2", data, False)
-
+mqttc.publish("test_topic_number_2", data, qos = qos, retain = retain)
 print(data)
 
 mqttc.disconnect()
-
-
