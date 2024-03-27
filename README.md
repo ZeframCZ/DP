@@ -37,6 +37,7 @@
 
 
 | First Header  |
+| ------------- |
 | mount -o remount,rw / |
 | mkdir /var/run/mosquitto |
 | chown mosquitto: /var/run/mosquitto |
