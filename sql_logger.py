@@ -33,7 +33,15 @@ def input_data(topic, content):
     cur.execute("INSERT INTO messages (day, month, year, time, topic, content) VALUES(?, ?, ?, ?, ?, ?)",(day, month, year, time, topic, content))
     con.commit()
 
-def on_connect(client, userdata, flags, reason_code):
+def on_connect_5(client, userdata, flags, reason_code, x):
+    if reason_code == 0:
+        print("Connection succesfull.")
+        client.subscribe("#")
+    else:
+        print(f"Connected with result code {reason_code}")
+        exit()
+
+def on_connect_4(client, userdata, flags, reason_code):
     if reason_code == 0:
         print("Connection succesfull.")
         client.subscribe("#")
@@ -54,7 +62,7 @@ if __name__ == "__main__":
     except:
         mqttc = mqtt.Client()
     
-    mqttc.on_connect = on_connect
+    mqttc.on_connect = on_connect_4
     mqttc.on_message = on_message
 
     mqttc.username_pw_set(username=username,password=password)
