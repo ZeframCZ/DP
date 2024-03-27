@@ -24,9 +24,11 @@
   
 ## Password file 
 - nano /etc/mosquitto/pswd.txt
+  
 | mosquitto.conf |
 | ------------- |
 | uziv:heslo <br> uziv2:heslo2 <br> uzivX:hesloX |
+
 - mosquitto_passwd -U /etc/mosquitto/pswd.txt 
 
 ## Mosquitto broker log
