@@ -1,5 +1,6 @@
 # DP
 ## Spuštění Mosquitto brokera
+...
 - mount -o remount,rw /
 - mkdir /var/run/mosquitto
 - chown mosquitto: /var/run/mosquitto
@@ -7,6 +8,7 @@
 - mosquitto -c /etc/mosquitto/mosquitto.conf
 - ctrl+z
 - bg
+...
 
 ## Spuštění sql_logger.py
 - source /root/main/venv/bin/activate
