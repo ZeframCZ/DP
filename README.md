@@ -14,6 +14,7 @@
 - python3 /root/main/sql_print.py
 - ctrl+z
 - bg
+- disown
 
 #### Základní config Mosquitto broker
 - nano /etc/mosquitto/mosquitto.conf
