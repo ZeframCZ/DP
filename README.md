@@ -1,5 +1,5 @@
 # DP
-### Spuštění Mosquitto brokera
+#### Spuštění Mosquitto brokera
 - mount -o remount,rw /
 - mkdir /var/run/mosquitto
 - chown mosquitto: /var/run/mosquitto
