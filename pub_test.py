@@ -1,3 +1,7 @@
+import paho.mqtt.client as mqtt 
+import random
+
+
 username = "test_user_1"
 password = "test_password_1"
 
@@ -8,14 +12,13 @@ retain = False
 ip = "160.217.169.226"
 port = 1883
 
-import paho.mqtt.client as mqtt 
-import random
 
 def on_connect(client, userdata, flags, reason_code):
     print(f"Connected with result code {reason_code}")
 
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
+
 
 try:
     mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
