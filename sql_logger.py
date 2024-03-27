@@ -39,7 +39,11 @@ def on_message(client, userdata, msg):
     print(f"({datetime.now()}) | Topic: {msg.topic} | Payload: {data}")
 
 if __name__ == "__main__":
-    mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+    try:
+        mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+    except:
+        mqttc = mqtt.Client()
+    
     mqttc.on_connect = on_connect
     mqttc.on_message = on_message
 
