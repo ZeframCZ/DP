@@ -20,7 +20,8 @@
   
 | mosquitto.conf |
 | ------------- |
-| pid_file /var/run/mosquitto/mosquitto <br> persistence true|
+| pid_file /var/run/mosquitto/mosquitto 
+<br> persistence true|
   
 - pid_file /var/run/mosquitto/mosquitto
 - persistence true
