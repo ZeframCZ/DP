@@ -29,6 +29,7 @@
   - uziv:heslo
   - uziv2:heslo2
   - uzivX:hesloX
+- mosquitto_passwd -U /etc/mosquitto/pswd.txt 
 
 ## Mosquitto broker log
 - sudo nano /var/log/mosquitto/mosquitto.log
