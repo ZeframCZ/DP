@@ -14,7 +14,15 @@
 - ctrl+z
 - bg
 
-![image](https://github.com/ZeframCZ/DP/assets/36083916/519c3096-025d-419b-980d-e9da93f1d477)
+## Základní config Mosquitto broker
+- nano /etc/mosquitto/mosquitto.conf
+pid_file /var/run/mosquitto/mosquitto
+persistence true
+persistence_location /var/lib/mosquitto/
+log_dest file /var/log/mosquitto/mosquitto.log
+include_dir /etc/mosquitto/conf.d
+password_file /etc/mosquitto/pswd.txt
+listener 1883
 
 ![image](https://github.com/ZeframCZ/DP/assets/36083916/11df268f-fe82-49e8-bd74-55f42c7125af)
 
