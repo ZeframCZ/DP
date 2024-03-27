@@ -24,6 +24,11 @@
   - password_file /etc/mosquitto/pswd.txt
   - listener 1883
 
-![image](https://github.com/ZeframCZ/DP/assets/36083916/11df268f-fe82-49e8-bd74-55f42c7125af)
+## Password file 
+- nano /etc/mosquitto/pswd.txt
+  - uziv:heslo
+  - uziv2:heslo2
+  - uzivX:hesloX
+
 
 ![image](https://github.com/ZeframCZ/DP/assets/36083916/6c0da983-f0b8-451f-b8f5-ac3d3de33c69)
