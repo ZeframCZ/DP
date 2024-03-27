@@ -22,7 +22,6 @@
   | ------------- |
   | **pid_file /var/run/mosquitto/mosquitto** <br> persistence true <br> persistence_location /var/lib/mosquitto/ <br> log_dest file /var/log/mosquitto/mosquitto.log <br> include_dir     /etc/mosquitto/conf.d <br> **password_file /etc/mosquitto/pswd.txt** <br> **listener 1883** |
   
-#### Password file 
 - nano /etc/mosquitto/pswd.txt
   
   | pswd.txt |
