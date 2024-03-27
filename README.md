@@ -1,7 +1,18 @@
 # DP
-## Spuštění Mosquitto brokera po restartu
+## Spuštění Mosquitto brokera
 - mount -o remount,rw /
+- mkdir /var/run/mosquitto
+- chown mosquitto: /var/run/mosquitto
+- chown mosquitto: /var/log/mosquitto/mosquitto.log
+- mosquitto -c /etc/mosquitto/mosquitto.conf
+- ctrl+z
+- bg
 
+## Spuštění sql_logger.py
+- source /root/main/venv/bin/activate
+- python3 /root/main/sql_print.py
+- ctrl+z
+- bg
 
 ![image](https://github.com/ZeframCZ/DP/assets/36083916/519c3096-025d-419b-980d-e9da93f1d477)
 
