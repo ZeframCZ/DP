@@ -3,16 +3,24 @@ import sqlite3
 from datetime import datetime
 import paho.mqtt.client as mqtt 
 
+
 database_path = "mqtt_data.db"
+
+username = "test_user_1"
+password = "test_password_1"
+
+ip = "160.217.169.226"
+port = 1883
+
+
+
 con = sqlite3.connect(database_path)
 cur = con.cursor()
-
 
 try:
     cur.execute("CREATE TABLE messages(day, month, year, time, topic, content)")
 except:
     print("table already exists.")
-
 
 
 def input_data(topic, content):
@@ -36,7 +44,9 @@ def on_connect(client, userdata, flags, reason_code):
 def on_message(client, userdata, msg):
     data = msg.payload.decode("utf-8")
     input_data(msg.topic, data)
+    
     print(f"({datetime.now()}) | Topic: {msg.topic} | Payload: {data}")
+
 
 if __name__ == "__main__":
     try:
@@ -47,8 +57,8 @@ if __name__ == "__main__":
     mqttc.on_connect = on_connect
     mqttc.on_message = on_message
 
-    mqttc.username_pw_set(username="test_user_1",password="test_password_1")
-    mqttc.connect("160.217.169.226", 1883, 60)
+    mqttc.username_pw_set(username=username,password=password)
+    mqttc.connect(ip, port, 60)
 
 
     mqttc.loop_forever()
