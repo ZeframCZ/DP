@@ -34,3 +34,13 @@
 
 ## Mosquitto broker log
 - sudo nano /var/log/mosquitto/mosquitto.log
+
+
+| First Header  |
+| mount -o remount,rw / |
+| mkdir /var/run/mosquitto |
+| chown mosquitto: /var/run/mosquitto |
+| chown mosquitto: /var/log/mosquitto/mosquitto.log |
+| mosquitto -c /etc/mosquitto/mosquitto.conf |
+| ctrl+z |
+| bg |
