@@ -16,7 +16,7 @@
 
 ## Základní config Mosquitto broker
 - nano /etc/mosquitto/mosquitto.conf
-pid_file /var/run/mosquitto/mosquitto
+  - pid_file /var/run/mosquitto/mosquitto
 persistence true
 persistence_location /var/lib/mosquitto/
 log_dest file /var/log/mosquitto/mosquitto.log
