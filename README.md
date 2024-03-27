@@ -24,21 +24,10 @@
   
 ## Password file 
 - nano /etc/mosquitto/pswd.txt
-  - uziv:heslo
-  - uziv2:heslo2
-  - uzivX:hesloX
+| mosquitto.conf |
+| ------------- |
+| uziv:heslo <br> uziv2:heslo2 <br> uzivX:hesloX |
 - mosquitto_passwd -U /etc/mosquitto/pswd.txt 
 
 ## Mosquitto broker log
 - sudo nano /var/log/mosquitto/mosquitto.log
-
-
-| First Header  |
-| ------------- |
-| mount -o remount,rw / <br> mkdir /var/run/mosquitto|
-| mkdir /var/run/mosquitto |
-| chown mosquitto: /var/run/mosquitto |
-| chown mosquitto: /var/log/mosquitto/mosquitto.log |
-| mosquitto -c /etc/mosquitto/mosquitto.conf |
-| ctrl+z |
-| bg |
