@@ -7,8 +7,10 @@ def on_connect(client, userdata, flags, reason_code):
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
-
-mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+try:
+    mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+except:
+    mqttc = mqtt.Client()
 mqttc.on_connect = on_connect
 mqttc.on_message = on_message
 
@@ -21,4 +23,5 @@ mqttc.publish("test_topic_number_2", data, False)
 print(data)
 
 mqttc.disconnect()
+
 
