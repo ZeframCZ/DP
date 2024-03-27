@@ -1,5 +1,5 @@
 # DP
-## Spuštění Mosquitto brokera
+### Spuštění Mosquitto brokera
 - mount -o remount,rw /
 - mkdir /var/run/mosquitto
 - chown mosquitto: /var/run/mosquitto
@@ -9,20 +9,20 @@
 - bg
 
 
-## Spuštění sql_logger.py
+### Spuštění sql_logger.py
 - source /root/main/venv/bin/activate
 - python3 /root/main/sql_print.py
 - ctrl+z
 - bg
 
-## Základní config Mosquitto broker
+### Základní config Mosquitto broker
 - nano /etc/mosquitto/mosquitto.conf
   
   | mosquitto.conf |
   | ------------- |
   | pid_file /var/run/mosquitto/mosquitto <br> persistence true <br> persistence_location /var/lib/mosquitto/ <br> log_dest file /var/log/mosquitto/mosquitto.log <br> include_dir     /etc/mosquitto/conf.d <br> password_file /etc/mosquitto/pswd.txt <br> listener 1883 |
   
-## Password file 
+### Password file 
 - nano /etc/mosquitto/pswd.txt
   
   | pswd.txt |
@@ -31,5 +31,5 @@
 
 - mosquitto_passwd -U /etc/mosquitto/pswd.txt 
 
-## Mosquitto broker log
+### Mosquitto broker log
 - sudo nano /var/log/mosquitto/mosquitto.log
