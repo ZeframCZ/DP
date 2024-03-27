@@ -25,7 +25,7 @@
 ## Password file 
 - nano /etc/mosquitto/pswd.txt
   
-  | mosquitto.conf |
+  | pswd.txt |
   | ------------- |
   | uziv:heslo <br> uziv2:heslo2 <br> uzivX:hesloX |
 
