@@ -1,6 +1,16 @@
 # DP
 ## Spuštění Mosquitto brokera
 ...
+mount -o remount,rw /
+mkdir /var/run/mosquitto
+chown mosquitto: /var/run/mosquitto
+chown mosquitto: /var/log/mosquitto/mosquitto.log
+mosquitto -c /etc/mosquitto/mosquitto.conf
+ctrl+z
+bg
+...
+
+  ...
 - mount -o remount,rw /
 - mkdir /var/run/mosquitto
 - chown mosquitto: /var/run/mosquitto
