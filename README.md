@@ -30,5 +30,5 @@
   - uziv2:heslo2
   - uzivX:hesloX
 
-
-![image](https://github.com/ZeframCZ/DP/assets/36083916/6c0da983-f0b8-451f-b8f5-ac3d3de33c69)
+## Mosquitto broker log
+- sudo nano /var/log/mosquitto/mosquitto.log
