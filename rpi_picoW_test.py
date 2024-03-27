@@ -2,8 +2,8 @@ from umqtt.simple import MQTTClient
 import network
 
 
-ssid = "xxx"
-password = "xxx"
+ssid = "___"
+password = "___"
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
@@ -20,27 +20,36 @@ while max_wait > 0:
 
 #Handle connection error
 if wlan.status() == 3:
-    print("Connected")
+    print("Connected to WiFi")
     status = wlan.ifconfig()
     print("My IP : " + status[0])
 else:
-    print("Could not connect")
-    exit(1)
+    print("Could not connect to WiFi")
 
 
 def connectMQTT():
     client = MQTTClient(client_id=b"raspberrypi_picow",
-    server=b"160.217.169.226",
+    server=b"160.217.169.227",
     port=1883,
     user=b"test_user_1",
     password=b"test_password_1",
-    keepalive=7200,
+    keepalive=5,
     ssl=False)
 
     client.connect()
     return client
 
+try:
+    client = connectMQTT()
+    print("Connected to broker")
+except:
+    print("Could not connect to broker")
 
-client = connectMQTT()
-client.publish("test/rpiW", "Hello there.")
-print("published")
+
+try:
+    client.publish("test/rpiW", "Hello there.")
+    print("published")
+except:
+    print("Could not publish")
+    
+
