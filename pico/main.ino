@@ -10,7 +10,7 @@ int status = WL_IDLE_STATUS;
 AsyncMqttClient mqttClient;
 
 
-#include</home/jiricech/Desktop/test_pico_C/main_2/main/onMQTT.h>
+#include</home/USER/Desktop/test_pico_C/main/onMQTT.h>
 
 void setup() {
   Serial.begin(115200);
