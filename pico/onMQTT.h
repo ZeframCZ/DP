@@ -1,24 +1,29 @@
-void blink(int n, int time){
-  for(int i = 0 ;i < n ;i++){
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(time);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(time);
-  }
+
+#define MQTT_HOST         "160.217.169.226"
+#define MQTT_PORT         1883
+
+bool mqtt_connected = false;
+
+
+
+void connect_mqtt(AsyncMqttClient* mqttClient){
+    while(mqtt_connected == false){
+      mqttClient->connect();
+    }
+    blink(10, 60);
 }
 
 
 void onMqttConnect(bool sessionPresent){
-  blink(3,70);
   Serial.print("Connected to MQTT.");
-
-  mqttClient.publish("test/rpiW", 0, false, "RP2040W Test1");
-  Serial.println("Publishing at QoS 0");
+  mqtt_connected = true;
 }
 
 void onMqttDisconnect(AsyncMqttClientDisconnectReason reason){
-  blink(1,200);
+  blink(10,50);
   Serial.println("Disconnected from MQTT.");
+  //AsyncMqttClient mqttClient = set_mqtt();
+  //connect_mqtt(&mqttClient);
 }
 
 void onMqttSubscribe(const uint16_t& packetId, const uint8_t& qos){
@@ -35,5 +40,18 @@ void onMqttMessage(char* topic, char* payload, const AsyncMqttClientMessagePrope
 
 void onMqttPublish(const uint16_t& packetId){
   Serial.println("Published message.");
-  blink(1,1000);
+}
+
+
+AsyncMqttClient set_mqtt(){
+  AsyncMqttClient mqttClient;
+  mqttClient.onConnect(onMqttConnect);
+  mqttClient.onDisconnect(onMqttDisconnect);
+  mqttClient.onSubscribe(onMqttSubscribe);
+  mqttClient.onUnsubscribe(onMqttUnsubscribe);
+  mqttClient.onMessage(onMqttMessage);
+  mqttClient.onPublish(onMqttPublish);
+  mqttClient.setCredentials("test_user_1", "test_password_1");
+  mqttClient.setServer(MQTT_HOST, MQTT_PORT);
+  return mqttClient;
 }
