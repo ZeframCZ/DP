@@ -1,6 +1,7 @@
 #include <WiFi.h>
 #include <AsyncMqtt_Generic.h>
 #include <string.h>
+#include <stdio.h>
 
 void blink(int n, int time){
   for(int i = 0 ;i < n ;i++){
@@ -18,18 +19,24 @@ void blink(int n, int time){
 uint8_t status;
 AsyncMqttClient mqttClient = set_mqtt();
 
+char wifi_ssid[500]="___";
+char wifi_pass[500]="___";
+
+
 void setup() {
   Serial.begin(9600);
-  status = connect_wifi("Cechovi", "Cechovi01");
+  status = connect_wifi(wifi_ssid, wifi_pass);
   connect_mqtt(&mqttClient);
 }
 
 
 char input[500]={'\0'};
-char per_payload[500]={'\0'};
-char per_topic[500]={'\0'};
+char per_payload[500]="None";
+char per_topic[500]="None";
+
 bool per_send = false;
 int pulish_time = 1000;
+
 
 
 unsigned long the_time = 0;
@@ -77,9 +84,11 @@ void loop() {
     //publish a message every x seconds
     if (strstr(input, "per") != 0){
       blink(2, 500);
-      int arg = find_int(input, 's');
-      sprintf(per_payload, "%s", "None");
-      sprintf(per_topic, "%s", "None");
+      char arg_char[500] = {'\0'};
+      find_str(input, 's', arg_char);
+      
+      int arg = atoi(arg_char);
+      
       find_str(input, 'm', per_payload);
       find_str(input, 't', per_topic);
 
@@ -91,7 +100,17 @@ void loop() {
     }
     //connect to mqtt
     if (strstr(input, "con") != 0){
+      find_str(input, 'u', wifi_ssid);
+      find_str(input, 'p', wifi_pass);
+      status = connect_wifi(wifi_ssid, wifi_pass);
       connect_mqtt(&mqttClient);
+      Serial.println("Connect");
+    }
+    //disconnect to mqtt
+    if (strstr(input, "dis") != 0){
+      WiFi.disconnect();
+      mqttClient.disconnect();
+      Serial.println("Disconect");
     }
     //DEBUG
     if (strstr(input, "deb") != 0){
@@ -117,7 +136,8 @@ void loop() {
       Serial.println("(Publish a message periodically) per -s time(s) -m payload -t topic");
       Serial.println("                                 help");
       Serial.println("(Debug)                          deb");
-      Serial.println("(connect to mqtt broker)         con");
+      Serial.println("(connect to wifi and mqtt broker)con -u ssid -p password");
+      Serial.println("(WiFi diwsconnect)         dis");
       Serial.println("---HELP---\n");
     }
     //clear input
@@ -137,7 +157,7 @@ void loop() {
       }
       mqttClient.publish(per_topic, 1, false, per_payload);
     }else{
-      status = connect_wifi("Cechovi", "Cechovi01");
+      status = connect_wifi(wifi_ssid, wifi_pass);
       connect_mqtt(&mqttClient);
     }
     the_time = cur_time+pulish_time;
