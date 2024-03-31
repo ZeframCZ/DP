@@ -1,26 +1,3 @@
-int find_int(char *input, char search){
-  char output[100];
-  int o = 0;
-  int len = strlen(input);
-  for(int i = 0; i<len; i++){
-    if (input[i] == '-'){
-      if (input[i+1] == search){
-        for(int n = i+1; n<len; n++){
-          if ((input[n] == '\0') || (input[n] == ' ')){
-              const char *outer = output;
-              return(atoi(outer));
-          }
-          output[o] = input[n+1];
-          o++;
-        }
-        const char *outer = output;
-        return(atoi(outer));
-      }  
-    }
-  }
-  return(0);
-}
-
 void find_str(char *input, char search, char *output){
     char temp[100] = {'\0'};;
     sprintf(temp, "None");
