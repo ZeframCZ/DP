@@ -22,30 +22,35 @@ int find_int(char *input, char search){
 }
 
 void find_str(char *input, char search, char *output){
-  char temp[100];
-  int o = 0;
-  int len = strlen(input);
-  for(int i = 0; i<len; i++){
-    if (input[i] == '-'){
-      if (input[i+1] == search){
-        for(int n = i+1; n<len; n++){
-          if ((input[n] == '\0') || (input[n] == ' ')){
-
-              Serial.println(temp);
-              //return(outer);
-              //*output = temp;
-              //sprintf(output, temp);
-          }
-          temp[o] = input[n+1];
-          o++;
+    char temp[100] = {'\0'};;
+    sprintf(temp, "None");
+    int o = 0;
+    int i = 0;
+    int len = strlen(input);
+    
+    bool arg_found = false;
+    //Find the beggining of the string
+    for(i = 0; i<len; i++){
+        if (input[i] == '-'){
+            if (input[i+1] == search){
+                arg_found = true;
+                break;
+            }
         }
-        //Serial.println(temp);
-        //return(outer);
-        //*output = temp;
-        sprintf(output, temp);
-      }  
     }
-  }
+    //Get arg
+    if(arg_found == true){
+        for(int n = i+3; n<len; n++){
+            if ((input[n] == '\n') || (input[n] == '\0') || (input[n+1] == '-')){
+                break;
+            }
+            temp[o] = input[n];
+            o++;
+        }
+    }
+    //Return arg
+    sprintf(output, "%s", temp);
+    return;
 }
 
 int intlen(unsigned x) {
