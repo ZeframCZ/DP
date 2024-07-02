@@ -1,4 +1,4 @@
-
+/var/www/html/dokuwiki/data/pages
 ===== Cheatsheet =====                                                                                                
 Usefull comands for the server.
 
