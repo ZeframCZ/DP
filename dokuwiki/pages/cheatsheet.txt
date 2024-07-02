@@ -1,0 +1,36 @@
+
+===== Cheatsheet =====                                                                                                
+Usefull comands for the server.
+
+=== List all running precesses ===
+  ps -aux
+
+=== Stop PHPMyAdmin ===
+  sudo a2disconf phpmyadmin.conf
+  sudo /etc/init.d/apache2 restart
+
+=== Start PHPMyAdmin ===
+  sudo a2enconf phpmyadmin.conf
+  sudo /etc/init.d/apache2 restart
+
+=== Start Mosquitto after restart ===
+  mount -o remount,rw /
+  mkdir /var/run/mosquitto
+  chown mosquitto: /var/run/mosquitto
+  chown mosquitto: /var/log/mosquitto/mosquitto.log
+  mosquitto -c /etc/mosquitto/mosquitto.conf
+  ctrl+z
+  bg
+
+ === Mosquitto log ===
+  sudo nano /var/log/mosquitto/mosquitto.log
+
+ === Start python scripts ===
+  source /root/main/venv/bin/activate
+  python3 /root/main/[python script].py
+
+ == Python scripts aviable: ==
+  * python3 /root/main/mysql_logger.py
+  * python3 /root/main/pub_test.py
+                                                                                                                      ▼
+
