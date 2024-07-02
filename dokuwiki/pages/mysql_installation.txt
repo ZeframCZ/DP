@@ -1,0 +1,21 @@
+====== MySQL ======
+===== Installation =====
+  * wget https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
+  * sudo apt install ./mysql-apt-config_0.8.29-1_all.deb
+    * Debian bullseye
+    * MySQL Server & Cluster....
+    * mysql-8.0
+    * ok
+  * sudo apt update
+  * apt-get install mysql-server
+  * nano /etc/init.d/mysql
+    * Input this: https://github.com/mysql/mysql-server/blob/8.0/support-files/mysql.server.sh
+    * edit basedir and datadir to
+      * basedir=/usr
+      * datadir=/var/lib/mysql
+  * chmod +x /etc/init.d/mysql
+  * service service mysql start
+  * mysql_secure_installation
+
+  * mkdir -p /var/run/mysqld
+  * chown mysql:mysql /var/run/mysqld
