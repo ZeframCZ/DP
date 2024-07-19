@@ -1,0 +1,39 @@
+====== MQTT Broker Mosquitto ======
+===== Installation =====
+  * apt install mosquitto
+  * apt install mosquitto-clients
+
+===== Configuration =====
+  * nano /etc/mosquitto/mosquitto.conf
+
+
+  pid_file /var/run/mosquitto/mosquitto
+  persistence true
+  persistence_location /var/lib/mosquitto/
+  log_dest file /var/log/mosquitto/mosquitto.log
+  include_dir /etc/mosquitto/conf.d
+  password_file /etc/mosquitto/pswd.txt
+  listener 1883
+
+  * nano /etc/mosquitto/pswd.txt
+
+  uziv:heslo
+  uziv2:heslo2
+  uzivX:hesloX
+
+  * mosquitto_passwd -U /etc/mosquitto/pswd.txt
+  * sudo mkdir /var/run/mosquitto
+  * sudo chown mosquitto: /var/run/mos
+===== Port forwarding =====
+  * sudo iptables -A INPUT -p tcp --dport 1883 --jump ACCEPT
+  * iptables-save
+
+===== Starting the broker =====
+  * mkdir /var/run/mosquitto
+  * chown mosquitto: /var/run/mosquitto
+  * chown mosquitto: /var/log/mosquitto/mosquitto.log
+  * mosquitto -c /etc/mosquitto/mosquitto.conf
+  * ctrl+z
+  * bg
+quitto
+  * sudo chown mosquitto: /var/log/mosquitto/mosquitto.log
