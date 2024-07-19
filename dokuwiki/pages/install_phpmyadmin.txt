@@ -1,0 +1,15 @@
+====== PHPMyAdmin ======
+===== Installation =====
+  * apt install apache2
+  * apt install phpmyadmin
+ {{:1.png?400|}}
+ (select no)
+  * apt install php
+
+===== Turn off =====
+  * sudo a2disconf phpmyadmin.conf
+  * sudo /etc/init.d/apache2 restart
+
+===== Turn on =====
+  * sudo a2enconf phpmyadmin.conf
+  * sudo /etc/init.d/apache2 restart
