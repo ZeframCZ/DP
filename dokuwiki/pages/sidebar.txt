@@ -1,0 +1,15 @@
+ [[start|Main page]]
+\\
+\\
+**Installation and configuration**\\
+  - [[Install Mosquitto|Mosquitto]]
+  - [[Install Python|Python]]
+  - [[Install MySQL|MySQL]]
+  - [[Install PHPMyAdmin|PHPMyAdmin]]
+  - [[Install Cron|Cron]]
+  - [[Install DokuWiki|DokuWiki]]
+\\
+**Usefull commands and scripts**\\
+  - [[Python scripts|Python Scripts]]
+  - [[Cheatsheet|Cheatsheet]]
+
