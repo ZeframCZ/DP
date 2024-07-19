@@ -1,0 +1,20 @@
+KZT Broker DokuWiki
+
+{{:screenshot_from_2024-04-23_20-16-17.png?400|}}
+
+ ** To do list: ** \\
+  - Mosquitto
+    * <del>Installed</del>
+    * <del>Running</del>
+    * Security
+    * Client verification
+  - <del>PHPMyAdmin</del>
+  - <del>MySQL</del>
+  - Logger
+    * <del>MySQL logging</del>
+    * csv logging?
+  - Cron
+    * <del>run_logger.sh</del>
+    * run_broker.sh
+
+Github: https://github.com/ZeframCZ/DP
