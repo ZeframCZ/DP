@@ -1,0 +1,32 @@
+====== Cron ======
+===== Installation =====
+  * apt install cron
+===== Configuration ====
+  * export VISUAL=nano
+  * export EDITOR=nano
+  * crontab -e
+<code>
+* * * * * /root/main/run_logger.sh
+* * * * * /root/main/run_broker.sh
+</code>
+
+<code>
+== run_logger.sh ==
+  DATE=`date +%c`;
+  ME=`basename "$0"`;
+  LCK="./${ME}.LCK";
+  exec 8>$LCK;
+  if flock -n -x 8; then
+    echo ""
+    echo "Starting logger..."
+    echo ""
+
+  /root/main/venv/bin/python /root/main/mysql_logger.py
+
+    echo ""
+    echo "Logger started  $DATE";
+    echo "Logger finished `date +%c`";
+ else
+    echo "Logger is still running at $DATE";
+  fi
+</code>
