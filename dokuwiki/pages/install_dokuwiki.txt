@@ -1,0 +1,39 @@
+====== DokuWiki ======
+===== Installation =====
+  * apt install libapache2-mod-php php-intl php7.4-intl
+  * service apache2 restart
+  * wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.t>
+  * tar xzvf dokuwiki-stable.tgz
+  *  mv dokuwiki-*a /var/www/html/dokuwiki
+  * chown -R www-data:www-data /var/www/html/dokuwiki
+  * sudo nano /etc/apache2/sites-available/dokuwiki.conf
+<code>
+<VirtualHost *:80>
+    ServerName    wiki.hwdomain.io
+    DocumentRoot  /var/www/dokuwiki
+
+    <Directory ~ "/var/www/dokuwiki/(bin/|conf/|data/|inc/)">
+        <IfModule mod_authz_core.c>
+            AllowOverride All
+            Require all denied
+        </IfModule>
+        <IfModule !mod_authz_core.c>
+            Order allow,deny
+            Deny from all
+        </IfModule>
+    </Directory>
+
+    ErrorLog   /var/log/apache2/wiki.hwdomain.io_error.log
+    CustomLog  /var/log/apache2/wiki.hwdomain.io_access.log combined
+</VirtualHost>
+</code>
+  * mkdir /var/www/dokuwiki
+  * sudo a2ensite dokuwiki.conf
+  * sudo apachectl configtest
+  * sudo /etc/init.d/apache2 restart
+  * http://160.217.169.226//dokuwiki/install.php
+{{:2.png?650|}}
+=>
+{{:3.png?650|}}
+=>
+{{:4.png?650|}}
