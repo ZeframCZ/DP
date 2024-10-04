@@ -15,34 +15,7 @@ try:
 except:
     logger.info("Logger could not bind")
     exit(1)
-import mysql.connector
-
-def mysql_connect():
-    try:
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Backora2024Ju.",
-            database = "testdatabase"
-        )
-        cur = mydb.cursor()
-        logger.info("MySQL connection OK")
-        return mydb, cur
-    except:
-        logger.info("MySQL connection failed")
-        exit(1)
 
 while True:
     data, addr = sock.recvfrom(1024)
     logger.info("received message: %s" % data)
-    try:
-        mydb, cur = mysql_connect()
-        timestamp = datetime.timestamp(datetime.now())
-        topic = "UDP/FLX_test"
-        content = str(data)
-        cur.execute("INSERT INTO messages (timestamp, topic, content) VALUES(%s, %s, %s)",(timestamp, topic, content))
-        mydb.commit()
-        logger.info("SQL commited")
-        mydb.disconnect()
-    except Exception as err:
-        logger.info("SQL INSERT failed"+str(err))
